@@ -19,38 +19,31 @@ function initEssentialFeatures() {
     initCartBadge();
 }
 
+// 公共错误处理函数
+const handleModuleError = error => console.error('模块加载失败:', error);
+
 // 初始化非关键功能（可延迟加载）
 function initNonEssentialFeatures() {
     // 动态导入非关键功能模块
     import('./modules/productCards.js').then(module => {
         module.initProductCards();
-    }).catch(error => {
-        console.error('模块加载失败:', error);
-    });
+    }).catch(handleModuleError);
 
     import('./modules/pageAnimation.js').then(module => {
         module.initPageLoadAnimation();
-    }).catch(error => {
-        console.error('模块加载失败:', error);
-    });
+    }).catch(handleModuleError);
 
     import('./modules/serviceIcons.js').then(module => {
         module.initServiceIcons();
-    }).catch(error => {
-        console.error('模块加载失败:', error);
-    });
+    }).catch(handleModuleError);
 
     import('./modules/brandIcons.js').then(module => {
         module.initBrandIcons();
-    }).catch(error => {
-        console.error('模块加载失败:', error);
-    });
+    }).catch(handleModuleError);
 
     import('./modules/scrollParallax.js').then(module => {
         module.initScrollParallax();
-    }).catch(error => {
-        console.error('模块加载失败:', error);
-    });
+    }).catch(handleModuleError);
 }
 
 // 图片加载错误处理
