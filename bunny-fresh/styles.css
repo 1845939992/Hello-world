@@ -4,36 +4,36 @@
     --primary-gradient: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 25%, #6dc9a0 50%, #52bf90 75%, #38b080 100%);
     --secondary-gradient: linear-gradient(135deg, #88d8b0 0%, #5dade2 50%, #3498db 100%);
     --accent-gradient: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-    
+
     /* 基础颜色 */
     --bg-color: #f8fafb;
     --bg-alt: #ffffff;
     --text-primary: #2c3e50;
     --text-secondary: #5d6d7e;
     --text-muted: #95a5a6;
-    
+
     /* 玻璃拟态 */
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.3);
     --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-    
+
     /* 阴影 */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
-    
+
     /* 动画缓动 */
     --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* 间距 */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    
+
     /* 圆角 */
     --radius-sm: 8px;
     --radius-md: 16px;
@@ -74,6 +74,10 @@ body {
     opacity: 0.4;
     z-index: -1;
     pointer-events: none;
+    /* 使用will-change提升动画性能 */
+    will-change: transform;
+    /* 使用transform3d触发GPU加速 */
+    transform: translate3d(0, 0, 0);
 }
 
 .organic-bg-1 {
@@ -104,31 +108,68 @@ body {
 }
 
 @keyframes float1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.05); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -30px) scale(1.05);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
 }
 
 @keyframes float2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-20px, 30px) scale(1.03); }
-    66% { transform: translate(20px, -20px) scale(0.97); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(-20px, 30px) scale(1.03);
+    }
+
+    66% {
+        transform: translate(20px, -20px) scale(0.97);
+    }
 }
 
 @keyframes float3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(20px, 20px) scale(1.02); }
-    66% { transform: translate(-15px, -15px) scale(0.98); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(20px, 20px) scale(1.02);
+    }
+
+    66% {
+        transform: translate(-15px, -15px) scale(0.98);
+    }
 }
 
 /* ===== 玻璃拟态卡片 ===== */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* 减少backdrop-filter的使用，只在现代浏览器中使用 */
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: var(--radius-md);
+}
+
+/* 现代浏览器支持backdrop-filter */
+@supports (backdrop-filter: blur(20px)) {
+    .glass-card {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
 }
 
 /* ===== 浮动卡片 ===== */
@@ -136,8 +177,11 @@ body {
     background: var(--bg-alt);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    transition: all 0.5s var(--ease-elastic);
+    /* 只过渡必要的属性，减少重排 */
+    transition: transform 0.5s var(--ease-elastic), box-shadow 0.5s var(--ease-elastic);
     overflow: hidden;
+    /* 使用will-change提升动画性能 */
+    will-change: transform, box-shadow;
 }
 
 .floating-card:hover {
@@ -148,12 +192,18 @@ body {
 /* ===== 头部导航 ===== */
 .header {
     background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+/* 现代浏览器支持backdrop-filter */
+@supports (backdrop-filter: blur(20px)) {
+    .header {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
 }
 
 .header-top {
@@ -376,8 +426,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .banner-text h1 {
@@ -518,6 +575,8 @@ section {
     height: 250px;
     object-fit: cover;
     transition: transform 0.6s var(--ease-smooth);
+    /* 使用will-change提升动画性能 */
+    will-change: transform;
 }
 
 .goods-item:hover .goods-image img,
@@ -617,6 +676,8 @@ section {
     height: 300px;
     object-fit: cover;
     transition: transform 0.6s var(--ease-smooth);
+    /* 使用will-change提升动画性能 */
+    will-change: transform;
 }
 
 .topic-item:hover img {
@@ -811,27 +872,28 @@ section {
 
 /* ===== 响应式设计 ===== */
 @media (max-width: 1024px) {
+
     .goods-list,
     .popular-list {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .topic-list {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .category-list {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .footer-top {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .banner-text h1 {
         font-size: 2.5rem;
     }
-    
+
     .banner-text h2 {
         font-size: 1.5rem;
     }
@@ -842,43 +904,43 @@ section {
         flex-direction: column;
         gap: var(--spacing-md);
     }
-    
+
     .search {
         max-width: 100%;
         width: 100%;
     }
-    
+
     .nav ul {
         overflow-x: auto;
         white-space: nowrap;
         gap: var(--spacing-md);
     }
-    
+
     .banner-image img {
         height: 350px;
     }
-    
+
     .banner-text {
         left: var(--spacing-md);
         right: var(--spacing-md);
     }
-    
+
     .goods-list,
     .popular-list,
     .topic-list,
     .category-list {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-top {
         grid-template-columns: 1fr;
     }
-    
+
     .service-list {
         flex-wrap: wrap;
         gap: var(--spacing-md);
     }
-    
+
     .service-item {
         width: calc(50% - var(--spacing-md));
     }

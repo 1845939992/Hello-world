@@ -1,14 +1,79 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小兔鲜 - 新鲜生活方式</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="description" content="小兔鲜 - 新鲜生活方式，提供优质生鲜、居家、餐厨等商品">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
+    <style>
+        /* 关键CSS - 首屏样式 */
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            max-width: 95%;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .banner {
+            padding: 2rem 0;
+        }
+
+        .banner-content {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 3rem;
+            transform: translateY(-50%);
+            color: white;
+            max-width: 450px;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
     <!-- 有机背景装饰 -->
     <div class="organic-bg organic-bg-1"></div>
@@ -34,12 +99,13 @@
             </div>
             <div class="header-main">
                 <div class="logo">
-                    <img src="../assets/小兔鲜儿logo.png" alt="小兔鲜">
+                    <img src="../assets/小兔鲜儿logo.png" alt="小兔鲜" loading="eager">
                 </div>
                 <div class="search">
                     <input type="text" placeholder="搜索商品">
                     <button class="search-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
@@ -47,7 +113,8 @@
                 </div>
                 <div class="cart">
                     <a href="#" class="cart-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="m1 1 4 4 2.68 11.28a2 2 0 0 0 2 1.72h10.64a2 2 0 0 0 2-1.72L23 6H6"></path>
@@ -79,7 +146,7 @@
         <div class="container">
             <div class="banner-content">
                 <div class="banner-image">
-                    <img src="../assets/首页-自然造物 Made in Nature-淘宝网.png" alt="春季新品">
+                    <img src="../assets/首页-自然造物 Made in Nature-淘宝网.png" alt="春季新品" loading="lazy">
                 </div>
                 <div class="banner-text">
                     <div class="badge">春季新品</div>
@@ -97,19 +164,19 @@
         <div class="container">
             <div class="brand-list glass-card">
                 <div class="brand-item">
-                    <img src="../assets/热门品牌1.png" alt="品牌1">
+                    <img src="../assets/热门品牌1.png" alt="品牌1" loading="lazy">
                 </div>
                 <div class="brand-item">
-                    <img src="../assets/热门品牌2.png" alt="品牌2">
+                    <img src="../assets/热门品牌2.png" alt="品牌2" loading="lazy">
                 </div>
                 <div class="brand-item">
-                    <img src="../assets/热门品牌3.png" alt="品牌3">
+                    <img src="../assets/热门品牌3.png" alt="品牌3" loading="lazy">
                 </div>
                 <div class="brand-item">
-                    <img src="../assets/热门品牌4.png" alt="品牌4">
+                    <img src="../assets/热门品牌4.png" alt="品牌4" loading="lazy">
                 </div>
                 <div class="brand-item">
-                    <img src="../assets/热门品牌5.png" alt="品牌5">
+                    <img src="../assets/热门品牌5.png" alt="品牌5" loading="lazy">
                 </div>
             </div>
         </div>
@@ -120,7 +187,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>新鲜好物</h2>
-                <a href="#" class="see-more">查看更多 
+                <a href="#" class="see-more">查看更多
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m5 12 7 7 7-7"></path>
                         <path d="M12 5v14"></path>
@@ -130,7 +197,7 @@
             <div class="goods-list">
                 <div class="goods-item floating-card">
                     <div class="goods-image">
-                        <img src="../assets/新鲜好物1.png" alt="商品1">
+                        <img src="../assets/新鲜好物1.png" alt="商品1" loading="lazy">
                         <div class="goods-overlay">
                             <button class="quick-view">快速查看</button>
                         </div>
@@ -142,7 +209,7 @@
                 </div>
                 <div class="goods-item floating-card">
                     <div class="goods-image">
-                        <img src="../assets/新鲜好物2.png" alt="商品2">
+                        <img src="../assets/新鲜好物2.png" alt="商品2" loading="lazy">
                         <div class="goods-overlay">
                             <button class="quick-view">快速查看</button>
                         </div>
@@ -154,7 +221,7 @@
                 </div>
                 <div class="goods-item floating-card">
                     <div class="goods-image">
-                        <img src="../assets/新鲜好物3.png" alt="商品3">
+                        <img src="../assets/新鲜好物3.png" alt="商品3" loading="lazy">
                         <div class="goods-overlay">
                             <button class="quick-view">快速查看</button>
                         </div>
@@ -166,7 +233,7 @@
                 </div>
                 <div class="goods-item floating-card">
                     <div class="goods-image">
-                        <img src="../assets/新鲜好物4.png" alt="商品4">
+                        <img src="../assets/新鲜好物4.png" alt="商品4" loading="lazy">
                         <div class="goods-overlay">
                             <button class="quick-view">快速查看</button>
                         </div>
@@ -185,7 +252,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>人气推荐</h2>
-                <a href="#" class="see-more">查看更多 
+                <a href="#" class="see-more">查看更多
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m5 12 7 7 7-7"></path>
                         <path d="M12 5v14"></path>
@@ -195,7 +262,7 @@
             <div class="popular-list">
                 <div class="popular-item floating-card">
                     <div class="popular-image">
-                        <img src="../assets/人气推荐1.png" alt="推荐1">
+                        <img src="../assets/人气推荐1.png" alt="推荐1" loading="lazy">
                         <div class="popular-badge">热销</div>
                     </div>
                     <div class="popular-info">
@@ -205,7 +272,7 @@
                 </div>
                 <div class="popular-item floating-card">
                     <div class="popular-image">
-                        <img src="../assets/人气推荐2.png" alt="推荐2">
+                        <img src="../assets/人气推荐2.png" alt="推荐2" loading="lazy">
                         <div class="popular-badge">新品</div>
                     </div>
                     <div class="popular-info">
@@ -215,7 +282,7 @@
                 </div>
                 <div class="popular-item floating-card">
                     <div class="popular-image">
-                        <img src="../assets/人气推荐3.png" alt="推荐3">
+                        <img src="../assets/人气推荐3.png" alt="推荐3" loading="lazy">
                         <div class="popular-badge">推荐</div>
                     </div>
                     <div class="popular-info">
@@ -225,7 +292,7 @@
                 </div>
                 <div class="popular-item floating-card">
                     <div class="popular-image">
-                        <img src="../assets/人气推荐4.png" alt="推荐4">
+                        <img src="../assets/人气推荐4.png" alt="推荐4" loading="lazy">
                         <div class="popular-badge">特惠</div>
                     </div>
                     <div class="popular-info">
@@ -242,7 +309,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>最新专题</h2>
-                <a href="#" class="see-more">查看更多 
+                <a href="#" class="see-more">查看更多
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m5 12 7 7 7-7"></path>
                         <path d="M12 5v14"></path>
@@ -251,21 +318,21 @@
             </div>
             <div class="topic-list">
                 <div class="topic-item floating-card">
-                    <img src="../assets/最新专题1.png" alt="专题1">
+                    <img src="../assets/最新专题1.png" alt="专题1" loading="lazy">
                     <div class="topic-overlay">
                         <h3>专题标题</h3>
                         <span>探索更多</span>
                     </div>
                 </div>
                 <div class="topic-item floating-card">
-                    <img src="../assets/最新专题2.png" alt="专题2">
+                    <img src="../assets/最新专题2.png" alt="专题2" loading="lazy">
                     <div class="topic-overlay">
                         <h3>专题标题</h3>
                         <span>探索更多</span>
                     </div>
                 </div>
                 <div class="topic-item floating-card">
-                    <img src="../assets/最新专题3.png" alt="专题3">
+                    <img src="../assets/最新专题3.png" alt="专题3" loading="lazy">
                     <div class="topic-overlay">
                         <h3>专题标题</h3>
                         <span>探索更多</span>
@@ -281,25 +348,25 @@
             <div class="category-list">
                 <div class="category-item glass-card">
                     <div class="category-icon">
-                        <img src="../assets/商品介绍卡片生鲜.png" alt="生鲜">
+                        <img src="../assets/商品介绍卡片生鲜.png" alt="生鲜" loading="lazy">
                     </div>
                     <h3>生鲜</h3>
                 </div>
                 <div class="category-item glass-card">
                     <div class="category-icon">
-                        <img src="../assets/商品介绍卡片-居家.png" alt="居家">
+                        <img src="../assets/商品介绍卡片-居家.png" alt="居家" loading="lazy">
                     </div>
                     <h3>居家</h3>
                 </div>
                 <div class="category-item glass-card">
                     <div class="category-icon">
-                        <img src="../assets/商品介绍卡片-餐厨.png" alt="餐厨">
+                        <img src="../assets/商品介绍卡片-餐厨.png" alt="餐厨" loading="lazy">
                     </div>
                     <h3>餐厨</h3>
                 </div>
                 <div class="category-item glass-card">
                     <div class="category-icon">
-                        <img src="../assets/商品介绍卡片-服饰.png" alt="服饰">
+                        <img src="../assets/商品介绍卡片-服饰.png" alt="服饰" loading="lazy">
                     </div>
                     <h3>服饰</h3>
                 </div>
@@ -313,25 +380,25 @@
             <div class="service-list">
                 <div class="service-item glass-card">
                     <div class="service-icon">
-                        <img src="../assets/品质新鲜.png" alt="品质新鲜">
+                        <img src="../assets/品质新鲜.png" alt="品质新鲜" loading="lazy">
                     </div>
                     <span>品质新鲜</span>
                 </div>
                 <div class="service-item glass-card">
                     <div class="service-icon">
-                        <img src="../assets/物流快捷.png" alt="物流快捷">
+                        <img src="../assets/物流快捷.png" alt="物流快捷" loading="lazy">
                     </div>
                     <span>物流快捷</span>
                 </div>
                 <div class="service-item glass-card">
                     <div class="service-icon">
-                        <img src="../assets/价格亲民.png" alt="价格亲民">
+                        <img src="../assets/价格亲民.png" alt="价格亲民" loading="lazy">
                     </div>
                     <span>价格亲民</span>
                 </div>
                 <div class="service-item glass-card">
                     <div class="service-icon">
-                        <img src="../assets/售后无忧.png" alt="售后无忧">
+                        <img src="../assets/售后无忧.png" alt="售后无忧" loading="lazy">
                     </div>
                     <span>售后无忧</span>
                 </div>
@@ -374,11 +441,11 @@
                     <h3>关注我们</h3>
                     <div class="social-links">
                         <div class="qrcode">
-                            <img src="../assets/微信公众号.png" alt="微信公众号">
+                            <img src="../assets/微信公众号.png" alt="微信公众号" loading="lazy">
                             <span>微信公众号</span>
                         </div>
                         <div class="qrcode">
-                            <img src="../assets/APP二维码.png" alt="APP二维码">
+                            <img src="../assets/APP二维码.png" alt="APP二维码" loading="lazy">
                             <span>APP下载二维码</span>
                         </div>
                     </div>
@@ -392,4 +459,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
