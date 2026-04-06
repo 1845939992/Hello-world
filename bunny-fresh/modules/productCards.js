@@ -1,15 +1,15 @@
 // 商品卡片悬停效果
 function initProductCards() {
     // 使用事件委托，减少事件监听器数量
-    document.addEventListener('mouseenter', function(e) {
+    document.addEventListener('mouseover', function (e) {
         const card = e.target.closest('.goods-item, .popular-item, .topic-item, .category-item');
-        if (card) {
+        if (card && !card.contains(e.relatedTarget)) {
             createRipple(e, card);
         }
     });
-    
+
     // 为快速查看按钮添加统一的点击事件
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         const quickViewBtn = e.target.closest('.quick-view');
         if (quickViewBtn) {
             e.stopPropagation();
@@ -26,28 +26,28 @@ function createRipple(e, element) {
     if (element._rippleTimeout) {
         clearTimeout(element._rippleTimeout);
     }
-    
+
     const ripple = document.createElement('span');
     const rect = element.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    
+
     // 使用CSS类而不是内联样式
     ripple.className = 'ripple-effect';
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
     ripple.style.width = `${size}px`;
     ripple.style.height = `${size}px`;
-    
+
     // 确保元素是相对定位
     if (getComputedStyle(element).position === 'static') {
         element.style.position = 'relative';
     }
     element.style.overflow = 'hidden';
-    
+
     element.appendChild(ripple);
-    
+
     // 使用requestAnimationFrame优化动画
     element._rippleTimeout = setTimeout(() => {
         ripple.remove();
