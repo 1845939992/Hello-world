@@ -3,8 +3,14 @@ function initProductCards() {
     // 使用事件委托，减少事件监听器数量
     document.addEventListener('mouseover', function (e) {
         const card = e.target.closest('.goods-item, .popular-item, .topic-item, .category-item');
-        if (card && !card.contains(e.relatedTarget)) {
+        if (card && !card.contains(e.relatedTarget) && !card._rippleActive) {
             createRipple(e, card);
+            card._rippleActive = true;
+
+            // 重置rippleActive标记
+            setTimeout(() => {
+                card._rippleActive = false;
+            }, 600);
         }
     });
 
